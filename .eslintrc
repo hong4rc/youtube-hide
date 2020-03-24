@@ -1,0 +1,10 @@
+{
+  "env": {
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "rules": {
+    "no-plusplus": "off"
+  }
+}

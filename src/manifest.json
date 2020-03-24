@@ -1,0 +1,13 @@
+{
+  "name": "",
+  "version": "",
+  "description": "",
+  "content_scripts": [{
+    "matches": ["https://*.youtube.com/*"],
+     "js": ["js/youtube.js"]
+  }],
+  "permissions": [
+    "https://*.youtube.com/"
+  ],
+  "manifest_version": 2
+}

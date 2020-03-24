@@ -1,0 +1,34 @@
+{
+  "name": "youtube-hide",
+  "version": "0.0.1",
+  "description": "Hide youtube's info",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp buildDev",
+    "prod": "gulp buildProd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hongarc/youtube-hide.git"
+  },
+  "keywords": [
+    "youtube",
+    "hide"
+  ],
+  "author": "Hongarc <aqua.hong.97@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hongarc/youtube-hide/issues"
+  },
+  "homepage": "https://github.com/Hongarc/youtube-hide#readme",
+  "devDependencies": {
+    "capitalize": "^2.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-terser": "^1.2.0",
+    "gulp-zip": "^5.0.1"
+  }
+}
