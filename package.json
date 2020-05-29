@@ -1,6 +1,6 @@
 {
   "name": "youtube-hide",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hide youtube's info",
   "main": "index.js",
   "scripts": {

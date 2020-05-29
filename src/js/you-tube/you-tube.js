@@ -1,4 +1,4 @@
-((document, MutationObserver, console, chrome, key) => {
+((document, MutationObserver, console, storage, key) => {
   const shortcutKey = 'shortcut-key';
   const defaultShortcut = 'ctrl+q';
   let titlePage;
@@ -76,16 +76,16 @@
     }
   };
 
-  chrome.storage.sync.get([shortcutKey], (result) => {
+  storage.get([shortcutKey], (result) => {
     const shortcut = result[shortcutKey];
     if (shortcut) {
       key(shortcut, onKey);
     } else {
-      chrome.storage.sync.set({ [shortcutKey]: defaultShortcut });
+      storage.set({ [shortcutKey]: defaultShortcut });
     }
   });
 
-  chrome.storage.sync.onChanged.addListener((changes) => {
+  storage.onChanged.addListener((changes) => {
     if (shortcutKey in changes) {
       const change = changes[shortcutKey];
       console.log(change);
@@ -95,4 +95,4 @@
   });
 
 // eslint-disable-next-line no-undef
-})(document, MutationObserver, console, chrome, key);
+})(document, MutationObserver, console, storage, key);
