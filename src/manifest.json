@@ -4,10 +4,11 @@
   "description": "",
   "content_scripts": [{
     "matches": ["https://*.youtube.com/*"],
-     "js": ["js/youtube.js"]
+     "js": ["js/you-tube.js"]
   }],
   "permissions": [
-    "https://*.youtube.com/"
+    "https://*.youtube.com/",
+    "storage"
   ],
   "manifest_version": 2
 }

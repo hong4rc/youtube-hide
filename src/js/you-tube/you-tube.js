@@ -1,4 +1,6 @@
-((document, MutationObserver, console) => {
+((document, MutationObserver, console, chrome, key) => {
+  const shortcutKey = 'shortcut-key';
+  const defaultShortcut = 'ctrl+q';
   let titlePage;
   const replaceTitle = '.';
 
@@ -66,16 +68,31 @@
     });
   };
 
-  // eslint-disable-next-line no-param-reassign
-  document.onkeyup = (e) => {
-    if (e.key.toLowerCase() === 'q' && e.ctrlKey) {
-      if (isHide) {
-        showTitle();
-      } else {
-        hideTitle();
-      }
+  const onKey = () => {
+    if (isHide) {
+      showTitle();
+    } else {
+      hideTitle();
     }
   };
 
+  chrome.storage.sync.get([shortcutKey], (result) => {
+    const shortcut = result[shortcutKey];
+    if (shortcut) {
+      key(shortcut, onKey);
+    } else {
+      chrome.storage.sync.set({ [shortcutKey]: defaultShortcut });
+    }
+  });
+
+  chrome.storage.sync.onChanged.addListener((changes) => {
+    if (shortcutKey in changes) {
+      const change = changes[shortcutKey];
+      console.log(change);
+      key.unbind(change.oldValue);
+      key(change.newValue, onKey);
+    }
+  });
+
 // eslint-disable-next-line no-undef
-})(document, MutationObserver, console);
+})(document, MutationObserver, console, chrome, key);

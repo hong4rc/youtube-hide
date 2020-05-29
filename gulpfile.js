@@ -3,6 +3,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const terser = require('gulp-terser');
 const clean = require('gulp-clean');
+const concat = require('gulp-concat');
 const zip = require('gulp-zip');
 const capitalize = require('capitalize');
 
@@ -31,7 +32,10 @@ const manifestTask = (cb) => {
 };
 
 const js = () => {
-  let src = gulp.src('./src/js/**.js');
+  let src = gulp.src([
+    './src/js/you-tube/key-master.js',
+    './src/js/you-tube/you-tube.js',
+  ]).pipe(concat('you-tube.js'));
   if (process.env.NODE_ENV === 'prod') {
     src = src.pipe(terser());
   }
