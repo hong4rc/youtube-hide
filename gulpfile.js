@@ -51,8 +51,14 @@ const build = gulp.series(del, js, manifestTask);
 const buildDev = gulp.series(dev, build);
 const buildProd = gulp.series(prod, build, dest);
 
+const watch = () => {
+  buildDev();
+  gulp.watch('src/js/*/*.js', buildDev);
+};
+
 module.exports = {
   build,
+  watch,
   buildDev,
   buildProd,
 };

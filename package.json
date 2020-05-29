@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp buildDev",
-    "prod": "gulp buildProd"
+    "prod": "gulp buildProd",
+    "test": "eslint src/**/*.js --fix",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
