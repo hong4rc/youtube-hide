@@ -42,7 +42,7 @@ const js = () => {
   return src.pipe(gulp.dest('./build/js'));
 };
 
-const dest = () => gulp.src('src/*')
+const dest = () => gulp.src('build/**/*')
   .pipe(zip(`${pkg.name}-${pkg.version}.zip`))
   .pipe(gulp.dest('dist'));
 
