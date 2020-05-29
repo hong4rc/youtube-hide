@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hongarc/youtube-hide.git"
+    "url": "git+https://github.com/hong4rc/youtube-hide.git"
   },
   "keywords": [
     "youtube",
     "hide"
   ],
-  "author": "Hongarc <aqua.hong.97@gmail.com>",
+  "author": "Anh Hong <aqua.hong.97@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Hongarc/youtube-hide/issues"
+    "url": "https://github.com/hong4rc/youtube-hide/issues"
   },
-  "homepage": "https://github.com/Hongarc/youtube-hide#readme",
+  "homepage": "https://github.com/hong4rc/youtube-hide#readme",
   "devDependencies": {
     "capitalize": "^2.0.3",
     "eslint": "^6.8.0",
