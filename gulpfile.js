@@ -6,11 +6,10 @@ const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const zip = require('gulp-zip');
 const capitalize = require('capitalize');
+const log = require('fancy-log');
 
 const pkg = require('./package.json');
-const manifest = require('./src/manifest.json');
 
-process.env.NODE_ENV = true;
 const dev = (cb) => {
   process.env.NODE_ENV = 'dev';
   cb();
@@ -24,6 +23,7 @@ const del = () => gulp
   .src('build', { read: false, allowEmpty: true }).pipe(clean());
 
 const manifestTask = (cb) => {
+  const manifest = JSON.parse(fs.readFileSync('./src/manifest.json', 'utf8'));
   manifest.name = capitalize.words(pkg.name.replace(/-/g, ' '));
   manifest.version = pkg.version;
   manifest.description = pkg.description;
@@ -37,6 +37,7 @@ const js = () => {
     './src/js/you-tube/you-tube.js',
   ]).pipe(concat('you-tube.js'));
   if (process.env.NODE_ENV === 'prod') {
+    log('Build production');
     src = src.pipe(terser());
   }
   return src.pipe(gulp.dest('./build/js'));
@@ -53,7 +54,8 @@ const buildProd = gulp.series(prod, build, dest);
 
 const watch = () => {
   buildDev();
-  gulp.watch('src/js/*/*.js', buildDev);
+  log('--- Build done, Watching src/js/ ---');
+  gulp.watch('src/**/**/*', buildDev);
 };
 
 module.exports = {
